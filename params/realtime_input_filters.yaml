@@ -17,13 +17,6 @@
       knn: 12
       epsilon: 1.33
       keepNormals: 1
-      keepDensities: 1
-
-- MaxDensityDataPointsFilter:
-      maxDensity: 100.0
-
-- SimpleSensorNoiseDataPointsFilter:
-    sensorType: 0
 
 - ObservationDirectionDataPointsFilter
 
