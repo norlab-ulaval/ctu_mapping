@@ -23,5 +23,7 @@
 	<param name="is_3D" value="true" />
 	<param name="is_online" value="true" />
 	<param name="is_mapping" value="true" />
+	<param name="save_map_cells_on_hard_drive" value="false"/>
+	<param name="publish_tfs_between_registrations" value="false"/>
     </node>
 </launch>
