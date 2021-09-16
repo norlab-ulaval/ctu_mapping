@@ -1,5 +1,8 @@
 <launch>
-    <node pkg="norlab_icp_mapper_ros" type="mapper_node" name="mapper_node" output="screen">
+    <arg name="machine" default="nuc" />
+    <include file="$(find nifti_drivers_launchers)/launch/machines.launch" />
+
+    <node pkg="norlab_icp_mapper_ros" type="mapper_node" name="mapper_node" output="screen" respawn="true" machine="$(arg machine)">
         <remap from="points_in" to="/points_filtered"/>
         <param name="robot_frame" value="base_link"/>
         <param name="odom_frame" value="odom"/>
@@ -12,7 +15,7 @@
         <param name="min_dist_new_point" value="0.15"/>
         <param name="compute_prob_dynamic" value="true"/>
         <param name="map_tf_publish_rate" value="100"/>
-	<param name="prior_dynamic" value="0.6" />
+        <param name="prior_dynamic" value="0.6" />
         <param name="threshold_dynamic" value="0.75" />
         <param name="beam_half_angle" value="0.017453292" /> <!-- 0.01 -->
         <param name="epsilon_a" value="0.1" />
@@ -22,4 +25,5 @@
         <param name="save_map_cells_on_hard_drive" value="false"/>
         <param name="publish_tfs_between_registrations" value="false"/>
     </node>
+    <node name="icp_diag_relay" pkg="topic_tools" type="throttle" args="messages icp_diagnostics 1.0 diagnostics" respawn="true" />
 </launch>
