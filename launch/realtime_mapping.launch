@@ -17,8 +17,8 @@
 	<param name="prior_dynamic" value="0.5" />
         <param name="threshold_dynamic" value="0.75" />
         <param name="beam_half_angle" value="0.003054326" /> <!-- 0.01 -->
-        <param name="epsilon_a" value="0.1" />
-        <param name="epsilon_d" value="0.1" />
+        <param name="epsilon_a" value="0.01" />
+        <param name="epsilon_d" value="0.01" />
         <param name="alpha" value="0.8" />
         <param name="beta" value="0.99" />
         <param name="save_map_cells_on_hard_drive" value="false"/>
