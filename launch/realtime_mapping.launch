@@ -1,4 +1,5 @@
 <launch>
+    <arg name="backup_in_ram" default="true"/>
     <arg name="machine" default="nuc" />
     <include file="$(find nifti_drivers_launchers)/launch/machines.launch" />
 
@@ -24,6 +25,12 @@
         <param name="beta" value="0.99" />
         <param name="save_map_cells_on_hard_drive" value="false"/>
         <param name="publish_tfs_between_registrations" value="false"/>
+        <param name="backup_in_ram" value="$(arg backup_in_ram)"/>
     </node>
+
     <node name="icp_diag_relay" pkg="topic_tools" type="throttle" args="messages icp_diagnostics 1.0 diagnostics" respawn="true" />
+
+    <group if="$(arg backup_in_ram)">
+        <node pkg="norlab_icp_mapper_backup" type="norlab_icp_mapper_backup_node" name="norlab_icp_mapper_backup_node" output="screen"/>
+    </group>
 </launch>
